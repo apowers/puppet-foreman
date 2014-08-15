@@ -11,8 +11,8 @@ describe 'foreman' do
 
         it { should compile.with_all_deps }
 
-        it { should contain_class('foreman::params') }
-        it { should contain_class('foreman::install').that_comes_before('foreman::config') }
+        it { should contain_class('foreman::defaults') }
+        it { should contain_class('foreman::package').that_comes_before('foreman::config') }
         it { should contain_class('foreman::config') }
         it { should contain_class('foreman::service').that_subscribes_to('foreman::config') }
 
@@ -29,7 +29,7 @@ describe 'foreman' do
         :operatingsystem => 'Nexenta',
       }}
 
-      it { expect { should contain_package('foreman') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
+      it { expect { should contain_package('foreman') }.to raise_error(Puppet::Error) }
     end
   end
 end
