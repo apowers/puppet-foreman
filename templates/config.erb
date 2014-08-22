@@ -1,3 +1,4 @@
 #Managed by ::foreman::config
+START=<%= @service_enable ? "yes" : "no" %>
 <% @merged_options.sort.each do |option,value| %>
 <%= option %>=<%= value %><% end %>

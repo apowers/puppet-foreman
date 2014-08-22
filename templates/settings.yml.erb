@@ -1,2 +1,4 @@
 #Managed by ::foreman::config
-<%= @merged_settings.to_yaml %>
+---
+<% @merged_settings.sort.each do |key,value| %>
+:<%= key %>:  <%= value %><% end %>
