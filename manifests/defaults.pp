@@ -21,20 +21,32 @@ class foreman::defaults {
   $service_name = 'foreman'
 
   $default_settings_options = {
-    'puppet_server' => 'puppet',
-    'unattended'    => true,
-    'puppetconfdir' => '/etc/puppet/puppet.conf',
-    'login'         => false,
-    'require_ssl'   => false,
+    'puppet_server'         => 'puppet',
+    'unattended'            => false,
+    'puppetconfdir'         => '/etc/puppet/puppet.conf',
+    'login'                 => false,
+    'require_ssl'           => false,
+    'locations_enabled'     => false,
+    'organizations_enabled' => false,
+
   }
   $default_sysconf_options = {
-    'START'         => 'yes',
     'FOREMAN_HOME'  => '/usr/share/foreman',
     'FOREMAN_IFACE' => '0.0.0.0',
     'FOREMAN_PORT'  => '3000',
     'FOREMAN_USER'  => 'foreman',
     'FOREMAN_ENV'   => 'production',
   }
-
+  $default_puppet_options = {
+    'url'         => "https://${::fqdn}",
+    'ssl_ca'      => '/var/lib/puppet/ssl/certs/ca.pem',
+    'ssl_cert'    => "/var/lib/puppet/ssl/certs/${::fqdn}.pem",
+    'ssl_key'     => "/var/lib/puppet/ssl/private_keys/${::fqdn}.pem",
+    'puppetdir'   => '/var/lib/puppet',
+    'puppetuser'  => 'puppet',
+    'facts'       => true,
+    'timeout'     => '10',
+    'threads'     => 'null',
+  }
 
 }

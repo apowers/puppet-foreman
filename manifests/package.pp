@@ -21,4 +21,16 @@ class foreman::package (
     ensure => $ensure,
   }
   ensure_packages($foreman_pkgs)
+
+  # Foreman report processor and fact/enc script.
+#  exec { 'install_foreman_report_script':
+#    command => '/usr/bin/wget -O /usr/lib/ruby/vendor_ruby/puppet/reports/foreman.rb https://raw.githubusercontent.com/theforeman/puppet-foreman/master/files/foreman-report_v2.rb',
+#    creates => '/usr/lib/ruby/vendor_ruby/puppet/reports/foreman.rb',
+#  }
+#  exec { 'install_foreman_enc_script':
+#    command => '/usr/bin/wget -O /etc/puppet/bin/foreman_enc.erb https://raw.githubusercontent.com/theforeman/puppet-foreman/master/files/external_node_v2.rb',
+#    creates => '/etc/puppet/bin/foreman_enc.erb',
+#  }
+
+
 }
