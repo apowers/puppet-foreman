@@ -1,4 +1,12 @@
 #Managed by ::foreman::config
 ---
-<% @merged_settings.sort.each do |key,value| %>
-:<%= key %>:  <%= value %><% end %>
+<% @merged_settings.sort.each do |key,value| -%>
+<%  if value.is_a?(Array) -%>
+:<%= key %>:
+<%    value.sort.each do |v| -%>
+- <%= v %>
+<%    end -%>
+<%  else -%>
+:<%= key %>:  <%= value %>
+<%  end -%>
+<% end -%>
