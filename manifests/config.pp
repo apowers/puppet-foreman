@@ -18,9 +18,11 @@ class foreman::config (
   $merged_options = merge($foreman::defaults::default_sysconf_options, $sysconf_options)
   $merged_settings = merge($foreman::defaults::default_settings_options, $config_options)
 
+  $groupname = $foreman::defaults::web_service_groupname
+
   file { "${sysconf_path}/foreman":
     ensure  => $ensure,
-    group   => 'www-data',
+    group   => $groupname,
     mode    => '0444',
     content => template('foreman/config.erb'),
   }
