@@ -32,11 +32,11 @@ class foreman::proxy::config (
     content => template('foreman/config.erb'),
   }
   file { $config_path:
-    ensure  => directory,
-    owner   => $service_owner,
-    mode    => '0555',
+    ensure => directory,
+    owner  => $service_owner,
+    mode   => '0555',
   } ->
-  file { "$config_path/settings.yml":
+  file { "${config_path}/settings.yml":
     ensure  => $ensure,
     owner   => $service_owner,
     mode    => '0440',
@@ -51,31 +51,31 @@ class foreman::proxy::config (
     notify  => Class['foreman::proxy::service'],
   }
 
-  foreman::yamlconf { "$config_path/settings.d/bmc.yml":
+  foreman::yamlconf { "${config_path}/settings.d/bmc.yml":
     options => $bmc_proxy_options,
   }
-  foreman::yamlconf { "$config_path/settings.d/dhcp.yml":
+  foreman::yamlconf { "${config_path}/settings.d/dhcp.yml":
     options => $dhcp_proxy_options,
   }
-  foreman::yamlconf { "$config_path/settings.d/dns.yml":
+  foreman::yamlconf { "${config_path}/settings.d/dns.yml":
     options => $dns_proxy_options,
   }
-  foreman::yamlconf { "$config_path/settings.d/facts.yml":
+  foreman::yamlconf { "${config_path}/settings.d/facts.yml":
     options => $facts_proxy_options,
   }
-  foreman::yamlconf { "$config_path/settings.d/puppet.yml":
+  foreman::yamlconf { "${config_path}/settings.d/puppet.yml":
     options => $puppet_proxy_options,
   }
-  foreman::yamlconf { "$config_path/settings.d/puppetca.yml":
+  foreman::yamlconf { "${config_path}/settings.d/puppetca.yml":
     options => $puppetca_proxy_options,
   }
-  foreman::yamlconf { "$config_path/settings.d/realm.yml":
+  foreman::yamlconf { "${config_path}/settings.d/realm.yml":
     options => $realm_proxy_options,
   }
-  foreman::yamlconf { "$config_path/settings.d/templates.yml":
+  foreman::yamlconf { "${config_path}/settings.d/templates.yml":
     options => $templates_proxy_options,
   }
-  foreman::yamlconf { "$config_path/settings.d/tftp.yml":
+  foreman::yamlconf { "${config_path}/settings.d/tftp.yml":
     options => $tftp_proxy_options,
   }
 

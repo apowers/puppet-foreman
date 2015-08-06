@@ -93,7 +93,7 @@ class foreman::defaults {
   $default_proxy_settings = {
     'settings_directory' => '/etc/foreman-proxy/settings.d',
     'foreman_url'        => 'http://127.0.0.1:3000',
-    'daemon'             => 'true',
+    'daemon'             => true,
     'daemon_pid'         => '/var/run/foreman-proxy/foreman-proxy.pid',
     'http_port'          => '8443',
     'virsh_network'      => 'default',
@@ -101,7 +101,7 @@ class foreman::defaults {
     'log_level'          => 'ERROR',
   }
   $disabled_proxy_options = {
-    'enabled' => 'false'
+    'enabled' => false
   }
 
 }
